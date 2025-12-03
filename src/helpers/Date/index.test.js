@@ -11,5 +11,9 @@ describe("Date helper", () => {
             const date = new Date("2022-07-08");
             expect(getMonth(date)).toBe("juillet");
         });
+        it("the function return undefined for incorrect month", () => {
+            const date = new Date("2025-13-31");
+            expect(getMonth(date)).toBe(undefined);
+        });
     });
 });

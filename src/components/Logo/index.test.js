@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import md5 from "md5";
 import Logo from "./index";
 
-describe("Logo size behavior", () => {
+describe("When a logo is called ", () => {
     const cases = [
         { description: "with size='large'", props: { size: "large" }, expected: { height: "60", width: "160" } },
         { description: "with size='small'", props: { size: "small" }, expected: { height: "60", width: "130" } },
