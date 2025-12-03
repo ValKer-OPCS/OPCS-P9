@@ -32,11 +32,13 @@ describe("When a page is created", () => {
   it("a list of events is displayed", () => {
     // to implement
   })
+
+
   it("a list a people is displayed", () => {
     render(<Home />);
     expect(screen.getByTestId("notre-equipe")).toBeInTheDocument();
 
-    const staff = [
+    const staffList = [
       { name: "Samira", position: "CEO" },
       { name: "Jean-baptiste", position: "CEO" },
       { name: "Alice", position: "Directeur marketing" },
@@ -44,16 +46,17 @@ describe("When a page is created", () => {
       { name: "Christine", position: "VP animation" },
       { name: "Isabelle", position: "VP communication" },
     ];
-    staff.forEach(person => {
+    staffList.forEach(person => {
       expect(screen.getByText(person.name)).toBeInTheDocument();
       expect(screen.getByText(person.position)).toBeInTheDocument();
     });
-
-
   })
-  it("a footer is displayed", () => {
-  render(<Home />);
 
+
+  it("a footer is displayed", () => {
+
+  render(<Home />);
+  
   const footer = screen.getByRole("contentinfo");
   expect(footer).toBeInTheDocument();
 
@@ -63,7 +66,9 @@ describe("When a page is created", () => {
 
   expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument();
 });
-  it("an event card, with the last event, is displayed", () => {
+
+it("an event card, with the last event, is displayed", () => {
     // to implement
   })
+  
 });
