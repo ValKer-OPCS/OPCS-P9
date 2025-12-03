@@ -15,7 +15,7 @@ describe("When Menu is created", () => {
     await screen.findByText("Contact");
   });
 
-  describe("and a click is triggered on contact button", () => {
+  describe("and a click is triggered on menu button", () => {
     it("document location  href change", async () => {
       render(<Menu />);
       fireEvent(
