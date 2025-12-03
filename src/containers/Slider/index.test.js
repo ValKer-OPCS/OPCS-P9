@@ -41,4 +41,16 @@ describe("When slider is created", () => {
       "Oeuvre à la coopération entre le secteur public et le privé."
     );
   });
+  
+  it("same number of radio as slide are created", async () =>{
+    window.console.error = jest.fn();
+    api.loadData = jest.fn().mockReturnValue(data);
+    render(
+      <DataProvider>
+        <Slider />
+      </DataProvider>
+    );
+     const radios = await screen.findAllByRole("radio");
+     expect(radios).toHaveLength(data.focus.length);
+  })
 });
