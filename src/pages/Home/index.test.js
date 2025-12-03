@@ -52,8 +52,17 @@ describe("When a page is created", () => {
 
   })
   it("a footer is displayed", () => {
-    // to implement
-  })
+  render(<Home />);
+
+  const footer = screen.getByRole("contentinfo");
+  expect(footer).toBeInTheDocument();
+
+  expect(screen.getByText("Notre derniére prestation")).toBeInTheDocument();
+  expect(screen.getByText("Contactez-nous")).toBeInTheDocument();
+  expect(screen.getByText(/Une agence événementielle/i)).toBeInTheDocument();
+
+  expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument();
+});
   it("an event card, with the last event, is displayed", () => {
     // to implement
   })
