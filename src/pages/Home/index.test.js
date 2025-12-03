@@ -33,7 +33,23 @@ describe("When a page is created", () => {
     // to implement
   })
   it("a list a people is displayed", () => {
-    // to implement
+    render(<Home />);
+    expect(screen.getByTestId("notre-equipe")).toBeInTheDocument();
+
+    const staff = [
+      { name: "Samira", position: "CEO" },
+      { name: "Jean-baptiste", position: "CEO" },
+      { name: "Alice", position: "Directeur marketing" },
+      { name: "Luís", position: "Animateur" },
+      { name: "Christine", position: "VP animation" },
+      { name: "Isabelle", position: "VP communication" },
+    ];
+    staff.forEach(person => {
+      expect(screen.getByText(person.name)).toBeInTheDocument();
+      expect(screen.getByText(person.position)).toBeInTheDocument();
+    });
+
+
   })
   it("a footer is displayed", () => {
     // to implement
