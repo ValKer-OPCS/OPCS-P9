@@ -31,6 +31,7 @@ export const DataProvider = ({ children }) => {
     getData();
   });
 
+  // Fix : Undefined props
    const last = data?.events
     ?.slice()
     .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null;
