@@ -16,6 +16,7 @@ const Slider = () => {
  const nextCard = () => {
   if (byDateDesc.length === 0) return;
   setTimeout(() => {
+    // Fix : blank slide
     setIndex(index < byDateDesc.length - 1 ? index + 1 : 0);
   }, 5000);
 };
@@ -35,8 +36,8 @@ const Slider = () => {
             </div>
           </div>
         </div>
-      ))}
-
+      ))};
+      {/* // Fix : Dupe Keys */}
       <div className="SlideCard__paginationContainer">
         <div className="SlideCard__pagination">
           {byDateDesc?.map((event, idx) => (

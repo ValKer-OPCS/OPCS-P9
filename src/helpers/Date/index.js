@@ -12,5 +12,5 @@ export const MONTHS = {
   11: "novembre",
   12: "décembre",
 };
-
+// Fix : Unable to find element with text 'janvier'
 export const getMonth = (date) => MONTHS[date.getMonth() + 1 ];
