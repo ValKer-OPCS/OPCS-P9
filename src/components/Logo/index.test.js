@@ -9,7 +9,7 @@ describe("When a logo is called ", () => {
         { description: "with no props", props: {}, expected: { height: "60", width: "130" } },
     ];
 
-    test.each(cases)("renders correctly $description", ({ props, expected }) => {
+    it.each(cases)("renders correctly $description", ({ props, expected }) => {
         render(<Logo {...props} />);
 
         const logo = screen.getByTestId("logo");
