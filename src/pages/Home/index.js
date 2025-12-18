@@ -31,13 +31,13 @@ const Page = () => {
             Une soirée d’entreprise vous permet de réunir vos équipes pour un
             moment convivial afin de valoriser votre société en projetant une
             image dynamique. Nous vous proposons d’organiser pour vous vos
-            diners et soirée d’entreprise
+            dîners et soirées d’entreprise
           </ServiceCard>
           <ServiceCard imageSrc="/images/hall-expo.png">
             <h3>Conférences</h3>
             724 events vous propose d’organiser votre évènement, quelle que soit
             sa taille, en s’adaptant à votre demande et à vos demandes. En tant
-            que spécialistes de l’évènementiel, nous saurons trouver le lieu
+            que spécialistes de l’événementiel, nous saurons trouver le lieu
             parfait ainsi que des solutions inédites pour capter votre audience
             et faire de cet évènement un succès
           </ServiceCard>
@@ -57,7 +57,7 @@ const Page = () => {
       </section>
       <section className="PeoplesContainer">
         <h2 data-testid="notre-equipe" id="notre-equipe" className="Title">Notre équipe</h2>
-        <p>Une équipe d’experts dédiés à l’ogranisation de vos événements</p>
+        <p>Une équipe d’experts dédiée à l’organisation de vos événements</p>
         <div className="ListContainer">
           <PeopleCard
             imageSrc="/images/stephanie-liverani-Zz5LQe-VSMY-unsplash.png"
@@ -98,7 +98,7 @@ const Page = () => {
             <div className="ModalMessage--success">
               <div>Message envoyé !</div>
               <p>
-                Merci pour votre message nous tâcherons de vous répondre dans
+                Merci pour votre message, nous tâcherons de vous répondre dans
                 les plus brefs délais
               </p>
             </div>
