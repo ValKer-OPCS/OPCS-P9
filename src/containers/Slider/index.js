@@ -37,7 +37,7 @@ const Slider = () => {
             </div>
           </div>
         </div>
-      ))};
+      ))}
       {/* // Fix : Dupe Keys */}
       <div className="SlideCard__paginationContainer">
         <div className="SlideCard__pagination">
