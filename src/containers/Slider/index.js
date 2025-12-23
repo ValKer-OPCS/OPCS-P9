@@ -13,7 +13,8 @@ const Slider = () => {
       new Date(evtA.date) > new Date(evtB.date) ? -1 : 1
     )
   : [];
- const nextCard = () => {
+  const nextCard = () => {
+    // Fix : Cannot read properties of Undefined 
   if (byDateDesc.length === 0) return;
   setTimeout(() => {
     // Fix : blank slide
