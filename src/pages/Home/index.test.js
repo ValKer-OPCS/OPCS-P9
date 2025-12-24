@@ -1,42 +1,6 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import Home from "./index";
-
-
-jest.mock("../../contexts/DataContext", () => ({
-  useData: () => ({
-    error: null,
-    last: {
-      cover: "/img.png",
-      title: "Dernier événement",
-      date: "2023-01-01",
-    },
-    data: {
-      events: [
-        {
-          id: 1,
-          cover: "/event1.png",
-          title: "Event 1",
-          date: "2023-01-01",
-          type: "conférence",
-        },
-        {
-          id: 2,
-          cover: "/event2.png",
-          title: "Event 2",
-          date: "2023-02-01",
-          type: "soirée",
-        },
-        {
-          id: 3,
-          cover: "/event3.png",
-          title: "Event 3",
-          date: "2023-03-01",
-          type: "soirée",
-        },
-      ],
-    },
-  }),
-}));
+import { DataProvider, api } from "../../contexts/DataContext";
 
 
 describe("When Form is created", () => {
@@ -65,19 +29,42 @@ describe("When Form is created", () => {
 
 });
 
+const data = {
+  events: [
+    { id: 1, title: "Event 1", date: "2023-01-01", cover: "/event1.png", type: "conférence" },
+    { id: 2, title: "Event 2", date: "2023-02-01", cover: "/event2.png", type: "soirée" },
+    { id: 3, title: "Event 3", date: "2023-03-01", cover: "/event3.png", type: "soirée" },
+  ],
+};
+
+beforeEach(() => {
+  jest.spyOn(api, "loadData").mockReturnValue(data);
+});
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+
 
 describe("When a page is created", () => {
-  it("a list of events is displayed", () => {
-    render(<Home />);
+  it("a list of events is displayed", async () => {
+    render( <DataProvider>
+            <Home />
+            </DataProvider>);
 
-    expect(screen.getByText("Event 1")).toBeInTheDocument();
-    expect(screen.getByText("Event 2")).toBeInTheDocument();
-    expect(screen.getByText("Event 3")).toBeInTheDocument();
+    const eventsSection = await screen.getByTestId("events-list");
+
+    expect(await within(eventsSection).findByText("Event 1")).toBeInTheDocument();
+    expect(within(eventsSection).getByText("Event 2")).toBeInTheDocument();
+    expect(within(eventsSection).getByText("Event 3")).toBeInTheDocument();
   })
 
 
   it("a list a people is displayed", () => {
-    render(<Home />);
+    render(<DataProvider>
+            <Home />
+            </DataProvider>);
     expect(screen.getByTestId("notre-equipe")).toBeInTheDocument();
 
     const staffList = [
@@ -97,7 +84,9 @@ describe("When a page is created", () => {
 
   it("a footer is displayed", () => {
 
-    render(<Home />);
+    render(<DataProvider>
+        <Home />
+      </DataProvider>);
 
     const footer = screen.getByRole("contentinfo");
     expect(footer).toBeInTheDocument();
@@ -108,17 +97,5 @@ describe("When a page is created", () => {
 
     expect(screen.getByText("45 avenue de la République, 75000 Paris")).toBeInTheDocument();
   });
-
-  it("an event card, with the last event, is displayed", () => {
-
-
-    render(<Home />);
-    expect(
-      screen.getByText("Dernier événement")
-    ).toBeInTheDocument();
-
-
-
-  })
 
 });

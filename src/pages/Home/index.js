@@ -51,7 +51,7 @@ const Page = () => {
           </ServiceCard>
         </div>
       </section>
-      <section className="EventsContainer">
+      <section className="EventsContainer" data-testid="events-list">
         <h2 id="nos-realisations" className="Title">Nos réalisations</h2>
         <EventList />
       </section>
