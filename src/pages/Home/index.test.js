@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, within, act } from "@testing-library/react";
 import Home from "./index";
 import { DataProvider, api } from "../../contexts/DataContext";
 
@@ -49,9 +49,13 @@ beforeEach(() => {
 
 describe("When a page is created", () => {
   it("a list of events is displayed", async () => {
-    render( <DataProvider>
-            <Home />
-            </DataProvider>);
+    await act(async () => {
+      render(
+        <DataProvider>
+          <Home />
+        </DataProvider>
+      );
+    });
 
     const eventsSection = await screen.getByTestId("events-list");
 
@@ -61,10 +65,14 @@ describe("When a page is created", () => {
   })
 
 
-  it("a list a people is displayed", () => {
-    render(<DataProvider>
-            <Home />
-            </DataProvider>);
+  it("a list of people is displayed", async () => {
+    await act(async () => {
+      render(
+        <DataProvider>
+          <Home />
+        </DataProvider>
+      );
+    });
     expect(screen.getByTestId("notre-equipe")).toBeInTheDocument();
 
     const staffList = [
@@ -82,11 +90,14 @@ describe("When a page is created", () => {
   })
 
 
-  it("a footer is displayed", () => {
-
-    render(<DataProvider>
-        <Home />
-      </DataProvider>);
+  it("a footer is displayed", async () => {
+    await act(async () => {
+      render(
+        <DataProvider>
+          <Home />
+        </DataProvider>
+      );
+    });
 
     const footer = screen.getByRole("contentinfo");
     expect(footer).toBeInTheDocument();
